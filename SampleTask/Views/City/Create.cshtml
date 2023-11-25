@@ -1,0 +1,20 @@
+﻿@using SampleTask.Models;
+@model City
+@{
+    ViewData["Title"] = "Create City";
+}
+
+<div class="container shadow p-5">
+    <div class="row">
+        <h1>Add City</h1>
+    </div>
+    <form method="post">
+        <div class="form-floating mb-3">            
+            <input type="text"  class="form-control" asp-for="CityName" placeholder="Enter city name" />
+            <label for="CityName">City Name</label>
+            <span asp-validation-for="CityName" class="alert-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-controller="City" asp-action="Index" class="btn btn-primary">Back</a>
+    </form>
+</div>

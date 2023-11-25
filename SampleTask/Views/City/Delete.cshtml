@@ -1,0 +1,23 @@
+﻿@using SampleTask.Models;
+@model City
+@{
+    ViewData["Title"] = "Delete City";
+}
+<div class="container shadow p-5">
+    <div class="row">
+        <h2>Delete City</h2>
+    </div>
+
+    <form method="post" asp-action="DeleteCity">
+        <input asp-for="Id" hidden />
+
+        <div class="card" style="width: 18rem;">            
+            <div class="card-body">
+                <h5 class="card-title">City ID : @Model.Id</h5>
+                <p class="card-text">City : @Model.CityName</p>
+                 <button type="submit" class="btn btn-danger">Delete</button>
+                 <a asp-controller="City" asp-action="Index" class="btn btn-primary">Back To List</a>
+            </div>
+        </div>
+    </form>
+</div>

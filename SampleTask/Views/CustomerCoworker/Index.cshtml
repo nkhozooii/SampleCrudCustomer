@@ -1,0 +1,132 @@
+﻿@using SampleTask.ViewModel
+@model List<CoworkerListViewModel>
+@{
+    ViewData["Title"] = "Coworkers";
+}
+<div class="container shadow p-5">
+    <div class="row">
+        <h2>Select Coworkers</h2>
+    </div>
+
+    <form method="post" asp-action="SubmitCoworkers" asp-route-id="@ViewBag.customer.Id">
+        <div class="card" style="width: 18rem;"> 
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.customer.Name Coworkers:</h5>
+                <table class="table table-light table-hover" id="coworkerTbl" runat="server">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Select Coworker</th>
+                            <th scope="col">Name</th>
+                            @*<th scope="col">CityName</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Fax</th>
+                            <th scope="col">Address</th>
+                            <th></th>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @for (int i = 0; i < Model.Count(); i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.CheckBoxFor(m => m[i].IscoWorker)
+
+                                </td>
+                                <td width="15%">
+                                    @Html.DisplayFor(m => m[i].Name)
+                                   @Html.HiddenFor(m => m[i].Id)
+                                    @*@item.Name   *@                                 
+                                </td>
+                                @*<td width="15%">
+                            @item.CityName
+                            </td>
+                            <td width="15%">
+                            @item.Phone
+                            </td>
+                            <td width="15%">
+                            @item.Fax
+                            </td>
+                            <td width="20%">
+                            @item.Address
+                            </td>*@
+                                @* <td>
+                            <a asp-controller="Customer" asp-action="Edit" asp-route-id="@item.Id" class=" btn btn-success">Edit</a>
+                            <a asp-controller="Customer" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary">Delete</a>
+
+                            </td>*@
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            <button type="submit" class="btn btn-danger">Save</button>
+                 <a asp-controller="Customer" asp-action="Index" class="btn btn-primary">Back To List</a>
+            </div>
+        </div>
+    </form>
+</div>
+@*onclick="Savecoworkers(@ViewBag.customer.Id)"
+*@@*<script type="text/javascript">
+    Savecoworkers = function (id) {
+        var CoworkerList = [];
+        var table = document.getElementById("coworkerTbl");
+        for (var i = 0, i = table.rows.length; i++) {
+           //find id ,idcow
+           //اگه چک..اضافه
+           //اگه نه حذف
+           // CoworkerList.push({ FkCustomerId:id , FkCoworkerId: $('coworkChk').val() });
+
+        }
+        //alert('ttttt');
+
+
+        alert(CoworkerList.join('\n'));
+
+        $.ajax
+            ({
+                type: 'Post',
+                url: "/CustomerCoworker/Submit",
+                data: {
+
+                },
+                dataType: 'json',
+                success: function (data) {
+                    $("#CoworkerModal").modal('toggle');
+
+                    //document.getElementById("Coding_IndexGeneral_AccessCodingPkCodingHidden").value = pkCoding;
+
+                    //$('#CustomerName').datetimepicker({ format: 'YYYY/MM/DD', ignoreReadonly: true });
+                    //document.getElementById("DriverList_CreateDriver_DriverCarrierLookup") id
+                },
+                error: function (jqXHR, textStatus, errorThrown) { }
+            });
+    }
+        
+        //    //iterate through rows
+        //    //rows would be accessed using the "row" variable assigned in the for loop
+        //    for (var j = 0, col; col = row.cells[j]; j++) {
+        //        //iterate through columns
+        //        //columns would be accessed using the "col" variable assigned in the for loop
+        //    }
+        //}
+        //$.ajax
+        //    ({
+        //        type: 'Post',
+        //        url: "/CustomerCoworker/Submit",
+        //        data: {
+                    
+        //        },
+        //        //dataType: 'html',
+        //        //success: function (data) {
+        //        //    $("#CoworkerModalBody").html(data);
+        //        //    $("#CoworkerModal").modal('toggle');
+
+        //        //    //document.getElementById("Coding_IndexGeneral_AccessCodingPkCodingHidden").value = pkCoding;
+
+        //        //    //$('#CustomerName').datetimepicker({ format: 'YYYY/MM/DD', ignoreReadonly: true });
+        //        //    //document.getElementById("DriverList_CreateDriver_DriverCarrierLookup") id
+        //        },
+        //        error: function (jqXHR, textStatus, errorThrown) { }
+        //    });
+
+</script>*@

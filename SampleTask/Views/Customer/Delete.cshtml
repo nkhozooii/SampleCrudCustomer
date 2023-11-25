@@ -1,0 +1,25 @@
+﻿@using SampleTask.ViewModel
+@model CustomerViewModel
+@{
+    ViewData["Title"] = "Delete Customer";
+}
+<div class="container shadow p-5">
+    <div class="row">
+        <h2>Delete Customer</h2>
+    </div>
+
+    <form method="post" asp-action="DeleteCustomer">
+        <input asp-for="Id" hidden />        
+
+        <div class="card" style="width: 18rem;"> 
+            <div class="card-body">
+                <h5 class="card-title">@Model.Name</h5>
+                <p class="card-text">@Model.Address</p>
+                <p class="card-text"> <strong>Phone:</strong>@Model.Phone</p>
+                <p class="card-text"><strong>Fax:</strong>@Model.Fax</p>
+                 <button type="submit" class="btn btn-danger">Delete</button>
+                 <a asp-controller="Customer" asp-action="Index" class="btn btn-primary">Back To List</a>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,45 @@
+﻿@using SampleTask.ViewModel
+@model CustomerViewModel
+@{
+    ViewData["Title"] = "Create Customer";
+}
+
+<div class="container shadow p-5">
+    <div class="row  pb-2">
+        <h1>Add customer</h1>
+    </div>
+
+
+    <form method="post" class="form-floating">
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" asp-for="Name" placeholder="Enter customer name" />
+            <label asp-for="Name">Name</label>
+            <span asp-validation-for="Name" class="alert-danger"></span>
+        </div>
+        
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" asp-for="Phone" placeholder="Enter Phone " />
+            <label asp-for="Phone">Phone</label>
+            <span asp-validation-for="Phone" class="alert-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" asp-for="Fax" placeholder="Enter Fax " />
+            <label asp-for="Fax">Fax</label>
+            <span asp-validation-for="Fax" class="alert-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <select class="form-select single-select dropdown" asp-for="CityId" asp-items="Model.City"></select>
+            <label asp-for="CityId">City</label>
+            <span asp-validation-for="CityId" class="alert-danger"></span>
+        </div>       
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" asp-for="Address" placeholder="Enter address " />
+            <label asp-for="Address">Address</label>
+            <span asp-validation-for="Address" class="alert-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-controller="customer" asp-action="Index" class="btn btn-primary">Back To List</a>
+    </form>
+</div>
